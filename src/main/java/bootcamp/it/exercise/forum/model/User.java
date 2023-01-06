@@ -5,15 +5,14 @@ public class User {
     String surname;
     String login;
     String password;
-    String password2;
 
 
-    public User(String name, String surname, String login, String password, String password2) {
+
+    public User(String name, String surname, String login, String password) {
         this.name = name;
         this.surname = surname;
         this.login = login;
         this.password = password;
-        this.password2 = password2;
     }
 
     public User() {
@@ -52,11 +51,4 @@ public class User {
         this.password = password;
     }
 
-    public String getPassword2() {
-        return password2;
-    }
-
-    public void setPassword2(String password2) {
-        this.password2 = password2;
-    }
 }
