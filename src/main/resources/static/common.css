@@ -8,3 +8,14 @@
   width: 100%
   center;
    }
+
+.logo{
+background: solid green;
+                display : flex;
+                justify-content:center;
+                    color: white;
+}
+.menu{
+ justify-content:center;
+  display : flex;
+}

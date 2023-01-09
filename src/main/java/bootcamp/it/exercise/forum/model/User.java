@@ -1,5 +1,8 @@
 package bootcamp.it.exercise.forum.model;
 
+import org.springframework.stereotype.Component;
+
+
 public class User {
     private String name;
     private String surname;

@@ -6,10 +6,15 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-    @Service
+@Service
     public class UserDAO implements IUserDao {
-        private final List<User> users = new ArrayList<>();
+        private static final List<User> users = new ArrayList<>();
+        UserDAO(){
+
+        }
+
 
         @Override
         public void saveUser(User user) {
@@ -17,12 +22,13 @@ import java.util.List;
         }
 
         @Override
-        public boolean findUserByLogin(String login) {
+        public Optional<User> findUserByLogin(String login) {
+
             for (User user : users) {
                 if (user.getLogin().equals(login)) {
-                    return true;
+                    return Optional.of(user);
                 }
             }
-            return false;
+            return Optional.empty();
         }
 }
