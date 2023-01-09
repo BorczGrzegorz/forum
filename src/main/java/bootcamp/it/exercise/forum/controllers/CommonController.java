@@ -14,9 +14,15 @@ import java.util.List;
 
 @Controller
 public class CommonController {
+    @RequestMapping(value = "/main", method = RequestMethod.GET)
+    public String main(Model model) {
+        String welcome = "Witamy na stronie głównej";
+        model.addAttribute("welcome", welcome);
 
+        return "main";
+    }
     @RequestMapping(value = "/form", method = RequestMethod.GET)
-    public String metoda(Model model) {
+    public String form(Model model) {
         model.addAttribute("user", new User());
         return "form";
     }
@@ -28,17 +34,5 @@ public class CommonController {
         System.out.println(user.getLogin());
         return "main";
     }
-    @RequestMapping(value = "/main", method = RequestMethod.GET)
-    public String main(Model model) {
-        String welcome = "Witamy na stronie głównej";
-        List<String> list = new ArrayList<>();
-        list.add("Stare Miasto");
-        list.add("Krowodrza Górka");
-        list.add("Podgórze");
-        list.add("Prądnik Biały");
-        list.add("Nowa Huta");
-        model.addAttribute("welcome", welcome);
-        model.addAttribute("districts", list);
-        return "main";
-    }
+
 }

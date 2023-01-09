@@ -1,14 +1,16 @@
 package bootcamp.it.exercise.forum.model;
 
 public class User {
-    String name;
-    String surname;
-    String login;
-    String password;
+    private String name;
+    private String surname;
+    private String login;
+    private String password;
+
+    private int id;
 
 
-
-    public User(String name, String surname, String login, String password) {
+    public User(int id, String name, String surname, String login, String password) {
+        this.id = id;
         this.name = name;
         this.surname = surname;
         this.login = login;
@@ -16,7 +18,6 @@ public class User {
     }
 
     public User() {
-
     }
 
     public String getName() {
@@ -49,6 +50,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
 }

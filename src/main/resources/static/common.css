@@ -1,7 +1,8 @@
 #logo{
-    height: 300px;
-    width: 100%;
-    text-align: center;
+     background: orange;
+                overflow: hidden;
+                color: white;
+
 }
 #logo img{
   width: 100%
