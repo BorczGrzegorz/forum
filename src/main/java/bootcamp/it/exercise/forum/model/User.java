@@ -1,26 +1,31 @@
 package bootcamp.it.exercise.forum.model;
 
-import org.springframework.stereotype.Component;
-
-
 public class User {
+    private static int id;
     private String name;
     private String surname;
     private String login;
     private String password;
+    private Role role;
 
-    private int id;
-
-
-    public User(int id, String name, String surname, String login, String password) {
+    public User(int id, String name, String surname, String login, String password, Role role) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.login = login;
         this.password = password;
+        this.role = role;
     }
 
     public User() {
+    }
+
+    public static int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        User.id = id;
     }
 
     public String getName() {
@@ -55,12 +60,66 @@ public class User {
         this.password = password;
     }
 
-    public int getId() {
-        return id;
+    public Role getRole() {
+        return role;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    public enum Role {
+        ADMIN,
+        USER
+    }
+
+    public static class BudowniczyJOLO {
+        User user = new User();
+
+        public BudowniczyJOLO id(int id) {
+            this.user.setId(id);
+            ;
+            return this;
+        }
+
+        public BudowniczyJOLO name(String name) {
+            this.user.setName(name);
+            return this;
+        }
+
+        public BudowniczyJOLO surname(String surname) {
+            this.user.setSurname(surname);
+            return this;
+        }
+
+        public BudowniczyJOLO login(String login) {
+            this.user.setLogin(login);
+            return this;
+        }
+
+        public BudowniczyJOLO password(String password) {
+            this.user.setPassword(password);
+            return this;
+        }
+
+        public BudowniczyJOLO role(Role role) {
+            this.user.setRole(role);
+            return this;
+        }
+        public User build(){
+            return this.user;
+        }
+        public BudowniczyJOLO clone(User user){
+            id(getId())
+                    .name(user.getName())
+                    .surname(user.getSurname())
+                    .login(user.getLogin())
+                    .password(user.getPassword())
+                    .role(user.getRole());
+            return this;
+        }
+
+
     }
 
 }

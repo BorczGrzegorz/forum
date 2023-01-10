@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="common.css">
+</head>
+<body>
+<div id="logo" th:replace="~{fragmenty.html::logo}" > </div>
+<div class="menu">
+    <form method="post" class="">
+
+        <input type="text" placeholder="Imie" th:field="*{user.name}">
+        <input type="text" placeholder="Nazwisko" th:field="*{user.surname}">
+        <input type="text" placeholder="login" th:field="*{user.login}">
+        <input type="password" placeholder="Hasło" th:field="*{user.password}">
+        <input type="password" placeholder="Powtórz hasło" name="password2">
+        <input type="submit" placeholder="OK">
+
+    </form>
+</div>
+</body>
+</html>

@@ -1,7 +1,13 @@
 package bootcamp.it.exercise.forum;
 
+import java.util.Optional;
+
 public class main {
     public static void main(String[] args) {
-        System.out.println("siema");
+
+Optional<Integer> op = Optional.empty();
+
+
+System.out.println("Optional: " + op);
     }
 }

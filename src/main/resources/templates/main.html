@@ -6,19 +6,14 @@
     <link rel="stylesheet" href="common.css">
 </head>
 <body>
+    <div th:text="${welcome}"></div>
+    <a th:text="${successfullyLogged}"></a>
 <div class="logo">
-     <div th:text="${welcome}"></div>
-    <div th:text="${successfullyLogged}"></div>
-
-<img src="logo.jpg" height="134" width="300">
-
+    <div th:replace="~{fragmenty.html::logo}"> </div>
     <a  href="/register" class="button">Zarejestruj</a>
-
-
+    <a href="/login">Zaloguj</a>
 </div>
 <div id="menu">
-
-
 </div>
 <div id="content"></div>
 
