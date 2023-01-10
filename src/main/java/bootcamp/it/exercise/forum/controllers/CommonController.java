@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import javax.print.attribute.standard.PresentationDirection;
-
 @Controller
 public class CommonController {
     @Resource
@@ -48,6 +46,20 @@ public class CommonController {
         userDao.saveUser(user);
        sessionObject.setUser(user);
         return "redirect:/main";
+    }
+    @RequestMapping(value = "/contact",method = RequestMethod.GET)
+    public String contact(Model model){
+        String informations ="Ten projekt powstał w celach dydaktycznych przez\nMichała Kruczałę :)";
+        model.addAttribute("info",informations);
+        return "contact";
+    }
+    @RequestMapping(path = "/news",method = RequestMethod.GET)
+    public String news(Model model){
+        String news ="Jakieś newsy";
+        model.addAttribute("newsy",news);
+        return "news";
+        ////zrobić szablon news:)
+
     }
 
 }

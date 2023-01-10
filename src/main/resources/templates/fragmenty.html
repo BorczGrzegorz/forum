@@ -3,11 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="common.css">
 
 </head>
 <body>
 <div id="logo" th:fragment="logo">
-  <img src="logo.jpg" height="134" width="300">
+  <img src="logo.jpg" width="700" height="300">
+</div>
+<div id="menu" th:fragment="menu">
+    <a href="/main">Strona główna</a>
+    <a href="/news">Nowinki z krakowa</a>
+    <a href="/contact">Kontakt</a>
+    <a href="/register" class="button">Zarejestruj</a>
+    <a href="/login">Zaloguj</a>
 </div>
 
 </body>

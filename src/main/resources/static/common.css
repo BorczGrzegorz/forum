@@ -1,4 +1,42 @@
 #logo{
+height:300px;
+width: 100%;
+text-align: center;
+}
+#menu{
+text-align: center;
+
+}
+#menu a{
+text- decoration: none;
+color : #22212B;
+font- size:25px;
+border: 2px solid #769752;
+border-radius: 10px ;
+padding: 2px 15px;
+transition:background-color 1s
+                  transition: color 1s;
+}
+#menu a :hover{
+border color:
+background-color : #22212B;;
+color: black;
+
+}
+#info{
+margin: 20px 200px;
+text-align:center;
+}
+
+
+.center{
+text-align: center;
+}
+#succesfullylogged{
+text-align:center;
+}
+
+/*{
      background: orange;
                 overflow: hidden;
                 color: black;
@@ -18,4 +56,4 @@ background: solid green;
 .menu{
  justify-content:center;
   display : flex;
-}
+} */
