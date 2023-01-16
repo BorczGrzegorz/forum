@@ -12,10 +12,11 @@
 </div>
 <div id="menu" th:fragment="menu">
     <a href="/main">Strona główna</a>
-    <a href="/news">Nowinki z krakowa</a>
+    <a href="/news">Nowinki i Posty</a>
     <a href="/contact">Kontakt</a>
-    <a href="/register" class="button">Zarejestruj</a>
-    <a href="/login">Zaloguj</a>
+    <a th:if="${!sessionObject.isLogged()}" href="/register" class="button">Zarejestruj</a>
+    <a th:if="${!sessionObject.isLogged()}" href="/login">Zaloguj</a>
+    <a th:if="${sessionObject.isLogged()}" href="/logout" class="button">Wyloguj</a>
 </div>
 
 </body>

@@ -1,17 +1,17 @@
 package bootcamp.it.exercise.forum.model;
 
-public class News {
+public class Post {
 
     String Header;
     String Content;
 
 
-    public News(String header, String content) {
+    public Post(String header, String content) {
         Header = header;
         Content = content;
     }
 
-    public News() {
+    public Post() {
     }
 
     public String getHeader() {

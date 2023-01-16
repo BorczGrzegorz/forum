@@ -41,7 +41,7 @@ public class AuthenticatorServices implements IAuthenticatorService {
     @Override
     public void registerUser(User user) throws UserLoginExistException {
         user.setRole(User.Role.USER);
-        this.userDAO.persistUser(user);
+        this.userDAO.saveUser(user);
     }
 
 

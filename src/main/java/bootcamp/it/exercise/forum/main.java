@@ -1,5 +1,7 @@
 package bootcamp.it.exercise.forum;
 
+import org.apache.commons.codec.digest.DigestUtils;
+
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
@@ -17,5 +19,6 @@ public class main {
        System.out.println(ZonedDateTime.now().toString().substring(0, 10)+ " godz: "+ZonedDateTime.now().toString().substring(11, 16));
         LocalDateTime localDateTime = LocalDateTime.now();
         System.out.println(localDateTime);
+        System.out.println(DigestUtils.md5Hex("admin"));
     }
 }
