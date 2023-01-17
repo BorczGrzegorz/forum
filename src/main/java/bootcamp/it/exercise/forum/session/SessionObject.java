@@ -7,8 +7,8 @@ import org.springframework.web.context.annotation.SessionScope;
 @Component
 @SessionScope
 public class SessionObject {
-    public int id;
-    public String login;
+    private int id;
+    private String login;
     public User user;
 
     public User getUser() {

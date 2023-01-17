@@ -1,14 +1,24 @@
-function validateLoginForm(){
+function validateLoginForm() {
     var login = document.getElementById("login");
     var password = document.getElementById("password");
 
-      var regex = /^[a-zA-Z0-9]{5,}&$/;
+    var regex = /^[a-zA-Z0-9]{5,}$/;
 
-    if(!regex.test(login.value)){
-    return false;
+    var result = true;
+
+    if(!regex.test(login.value)) {
+        login.style.background = "#ff0000";
+        result = false;
+    } else {
+        login.style.background = "#769B4B";
     }
- if(!regex.test(password.value)){
-    return false;
+
+    if(!regex.test(password.value)) {
+        password.style.background = "#ff0000";
+        result = false;
+    } else {
+        password.style.background = "#769B4B";
     }
-    return true;
+
+    return result;
 }

@@ -8,16 +8,15 @@
 </head>
 <body>
 <div id="logo" th:fragment="logo">
-  <img src="logo.jpg" width="700" height="300">
+    <img src="logo.jpg" width="700" height="300">
 </div>
 <div id="menu" th:fragment="menu">
     <a href="/main">Strona główna</a>
-    <a href="/news">Nowinki i Posty</a>
+    <a href="/posts">Nowinki i Posty</a>
     <a href="/contact">Kontakt</a>
     <a th:if="${!sessionObject.isLogged()}" href="/register" class="button">Zarejestruj</a>
-    <a th:if="${!sessionObject.isLogged()}" href="/login">Zaloguj</a>
+    <a th:if="${!sessionObject.isLogged()}" href="/login" class="button">Zaloguj</a>
     <a th:if="${sessionObject.isLogged()}" href="/logout" class="button">Wyloguj</a>
 </div>
-
 </body>
 </html>

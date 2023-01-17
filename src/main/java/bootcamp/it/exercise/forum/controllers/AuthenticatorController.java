@@ -1,6 +1,7 @@
 package bootcamp.it.exercise.forum.controllers;
 
 import bootcamp.it.exercise.forum.exceptions.UserLoginExistException;
+import bootcamp.it.exercise.forum.interfaces.IAuthenticatorService;
 import bootcamp.it.exercise.forum.interfaces.IUserDao;
 import bootcamp.it.exercise.forum.model.User;
 import bootcamp.it.exercise.forum.services.UserValidationException;
@@ -22,9 +23,8 @@ public class AuthenticatorController {
     SessionObject sessionObject;
     @Autowired
     UserValidationService userValidationService;
-
-
-
+    @Autowired
+    IAuthenticatorService authenticatorService;
 
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -34,10 +34,13 @@ public class AuthenticatorController {
         } catch (UserValidationException e) {
             e.printStackTrace();
         }
-//        if (!this.sessionObject.isLogged()) {
-//              sessionObject.setUser();
-//        }
-        return "login";
+        authenticatorService.authenticate(login,password);
+
+        if (!this.sessionObject.isLogged()) {
+            sessionObject.setUser(null);
+        }
+        return "redirect:/main";
+        // return "login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -46,9 +49,13 @@ public class AuthenticatorController {
         return "login";  //skumać czy to dobrze,bo chyba nie
     }
 
+    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    public String logout(){
+        sessionObject.setUser(null);
+//tu byłem ,to robiłem + thymeleaf we fragmentach coś nie chula
 
-
-
+        return "redirect/:login";
+    }
 
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)

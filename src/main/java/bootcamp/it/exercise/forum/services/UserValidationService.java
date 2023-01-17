@@ -2,27 +2,32 @@ package bootcamp.it.exercise.forum.services;
 
 import org.springframework.stereotype.Service;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 @Service
 public class UserValidationService {
-    public void validateUser(String login, String password) throws UserValidationException {
+    public void validateUser(String login, String password) {
         validateLogin(login);
         validatePassword(password);
     }
 
 
-    private void validateLogin(String login) throws UserValidationException {
-        String regex = "^[a-zA-Z0-9]{5,}&$";
-        if (login.matches(regex)) {
+    public static void validateLogin(String login) {
+        String regex = "^[a-zA-Z0-9]{5,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(login);
+        if (!matcher.matches()) {
             throw new UserValidationException();
+
         }
     }
 
-    private void validatePassword(String password) throws UserValidationException {
-        String regex = "^[a-zA-Z0-9]{5,}&$";
-        if (password.matches(regex)) {
+    public static void validatePassword(String password) {
+        String regex = "^[a-zA-Z0-9]{5,}$";
+        if (!password.matches(regex)) {
             throw new UserValidationException();
-
         }
-
     }
 }
+
