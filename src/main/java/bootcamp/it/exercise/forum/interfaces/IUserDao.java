@@ -9,5 +9,7 @@ public interface IUserDao {
 
     Optional<User> findUserByLogin(String login);
    void saveUser(User user) throws UserLoginExistException;
+   String getThatLoginExists();
+   void setThatLoginExists(String thatLoginExists);
 
 }

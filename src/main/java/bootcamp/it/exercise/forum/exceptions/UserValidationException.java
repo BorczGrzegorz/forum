@@ -1,9 +1,8 @@
-package bootcamp.it.exercise.forum.services;
+package bootcamp.it.exercise.forum.exceptions;
 
 public class UserValidationException extends RuntimeException {
-
     @Override
     public String getMessage() {
-       return "****  Niepomyśłnie zvalidowano usera  ****";
+        return super.getMessage();
     }
 }

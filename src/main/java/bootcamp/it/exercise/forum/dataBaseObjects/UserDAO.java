@@ -13,30 +13,42 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-    public class UserDAO implements IUserDao {
+public class UserDAO implements IUserDao {
     @Autowired
     IUserIdSequence userIdSequence;
 
-        private static final List<User> users = new ArrayList<>();
-        UserDAO(){
-            users.add(new User(1,"Michał","Kruczała","admin","21232f297a57a5a743894a0e4a801fc3", User.Role.ADMIN));
-        }
+    public  String getThatLoginExists() {
+        return thatLoginExists;
+    }
+
+    @Override
+    public void setThatLoginExists(String thatLoginExists) {
+        UserDAO.thatLoginExists = thatLoginExists;
+    }
 
 
-        @Override
-        public Optional<User> findUserByLogin(String login) {
+    private static String thatLoginExists = "";
+    private static final List<User> users = new ArrayList<>();
 
-            for (User user : users) {
-                if (user.getLogin().equals(login)) {
-                    return Optional.of(user);
-                }
+    UserDAO() {
+        users.add(new User(1, "Michał", "Kruczała", "admin", "21232f297a57a5a743894a0e4a801fc3", User.Role.ADMIN));
+    }
+
+
+    @Override
+    public Optional<User> findUserByLogin(String login) {
+
+        for (User user : users) {
+            if (user.getLogin().equals(login)) {
+                return Optional.of(user);
             }
-            return Optional.empty();
         }
+        return Optional.empty();
+    }
 
     @Override
     public void saveUser(User user) throws UserLoginExistException {
-        if(findUserByLogin(user.getLogin()).isPresent()) {
+        if (findUserByLogin(user.getLogin()).isPresent()) {
             throw new UserLoginExistException();
         }
         user.setId(this.userIdSequence.getId());

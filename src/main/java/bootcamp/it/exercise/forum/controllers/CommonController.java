@@ -34,6 +34,7 @@ public class CommonController {
     public String contact(Model model) {
         String informations = "Ten projekt powstał w celach dydaktycznych przez Michała Kruczałę :)";
         model.addAttribute("info", informations);
+        model.addAttribute("sessionObject",sessionObject);
         return "contact";
     }
 
@@ -41,6 +42,7 @@ public class CommonController {
     public String news(Model model) {
         String posts = "Jakieś posty";
         model.addAttribute("posts", posts);
+        model.addAttribute("sessionObject",this.sessionObject);
         return "posts";
         ////zrobić szablon news:)
 

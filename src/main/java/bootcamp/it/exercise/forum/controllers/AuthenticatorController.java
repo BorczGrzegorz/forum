@@ -4,9 +4,10 @@ import bootcamp.it.exercise.forum.exceptions.UserLoginExistException;
 import bootcamp.it.exercise.forum.interfaces.IAuthenticatorService;
 import bootcamp.it.exercise.forum.interfaces.IUserDao;
 import bootcamp.it.exercise.forum.model.User;
-import bootcamp.it.exercise.forum.services.UserValidationException;
+import bootcamp.it.exercise.forum.exceptions.UserValidationException;
 import bootcamp.it.exercise.forum.services.UserValidationService;
 import bootcamp.it.exercise.forum.session.SessionObject;
+import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class AuthenticatorController {
     @Autowired
     IUserDao userDao;
-    @Autowired
+    @Resource //resource nie będzie wstrzykiwane jako komponent,tylk ojako zasób, a zasób może się zmianiać,i będzie się wstrzykiwać co żądanie http
     SessionObject sessionObject;
     @Autowired
     UserValidationService userValidationService;
@@ -28,19 +29,22 @@ public class AuthenticatorController {
 
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@RequestParam String login, @RequestParam String password) {
+    public String login(Model model, @RequestParam String login, @RequestParam String password) {
+        model.addAttribute("sessionObject", this.sessionObject);
         try {
-            this.userValidationService.validateUser(login, password);
+            this.userValidationService.validateUserTryingToLogIn(login, password);
         } catch (UserValidationException e) {
             e.printStackTrace();
+            System.out.println("nie weszłeś");
+            return "redirect:/login";
         }
-        authenticatorService.authenticate(login,password);
-
+        this.authenticatorService.authenticate(login, password);
         if (!this.sessionObject.isLogged()) {
-            sessionObject.setUser(null);
+
+            System.out.println("miałeś już sesję");
+            return "redirect:/login";
         }
         return "redirect:/main";
-        // return "login";
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -49,29 +53,37 @@ public class AuthenticatorController {
         return "login";  //skumać czy to dobrze,bo chyba nie
     }
 
-    @RequestMapping(value = "/logout",method = RequestMethod.GET)
-    public String logout(){
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout() {
         sessionObject.setUser(null);
-//tu byłem ,to robiłem + thymeleaf we fragmentach coś nie chula
-
-        return "redirect/:login";
+        return "redirect:/login";
     }
 
 
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String form(Model model) {
+        model.addAttribute("sessionObject", this.sessionObject);
+        model.addAttribute("thatLoginExists",userDao.getThatLoginExists());
         model.addAttribute("user", new User());
         return "register";
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String medota(@ModelAttribute User user, @RequestParam String password2) throws UserLoginExistException {
+    public String medota(@ModelAttribute User user, @RequestParam String password2) {
+        try {
+            this.userValidationService.validateRegisterUser(user,password2);
+            if (userDao.findUserByLogin(user.getLogin()).isPresent()) {
 
-        if (userDao.findUserByLogin(user.getLogin()).isPresent()) {
-            return "redirect:/register";
+              this.userDao.setThatLoginExists("That login exists");
+                return "redirect:/register";
+            }
+            userDao.saveUser(user);
+            sessionObject.setUser(user);
+        } catch (UserLoginExistException e) {
+            e.getMessage();
+        }catch (UserValidationException e){
+            e.printStackTrace();
         }
-        userDao.saveUser(user);
-        sessionObject.setUser(user);
         return "redirect:/main";
     }
 }

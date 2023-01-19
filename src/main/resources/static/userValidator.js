@@ -7,14 +7,14 @@ function validateLoginForm() {
     var result = true;
 
     if(!regex.test(login.value)) {
-        login.style.background = "#ff0000";
+        login.style.background = "#E72627";
         result = false;
     } else {
         login.style.background = "#769B4B";
     }
 
     if(!regex.test(password.value)) {
-        password.style.background = "#ff0000";
+        password.style.background = "#E72627";
         result = false;
     } else {
         password.style.background = "#769B4B";
