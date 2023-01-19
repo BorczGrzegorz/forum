@@ -15,7 +15,20 @@
     <div id="logo" th:replace="~{fragmenty.html::logo}"> </div>
 </div>
  <div th:replace="~{fragmenty.html::menu}"></div>
-<div id="content"></div>
+
+
+
+<div class="post" th:each="post : ${postList}">
+    <div th:text="${post.header}" class="title"></div>
+    <div th:text="${book.}" class="author"></div>
+    <div th:text="'Cena: ' + ${book.price} + ' zł'" class="price"></div>
+    <div th:text="'ISBN: ' + ${book.isbn}" class="isbn"></div>
+    <div th:text="'Pozostało ' + ${book.quantity} + ' sztuk'" class="quantity"></div>
+    <a th:if="${sessionObject.isAdmin()}" th:href="@{/book/edit/{id}(id=${book.id})}" class="edit">Edytuj</a>
+    <a th:if="${!sessionObject.isLogged()}" href="/login" class="buy">Zaloguj aby kupić</a>
+    <a th:if="${sessionObject.isLogged()}" th:href="@{/cart/add/{id}(id=${book.id})}" class="buy">Dodaj do koszyka</a>
+</div>
+
 
 
 </body>

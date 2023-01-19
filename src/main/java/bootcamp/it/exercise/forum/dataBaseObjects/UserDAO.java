@@ -1,8 +1,7 @@
 package bootcamp.it.exercise.forum.dataBaseObjects;
 
 import bootcamp.it.exercise.forum.exceptions.UserLoginExistException;
-import bootcamp.it.exercise.forum.interfaces.IUserDao;
-import bootcamp.it.exercise.forum.interfaces.IUserIdSequence;
+import bootcamp.it.exercise.forum.sequence.IIdSequence;
 import bootcamp.it.exercise.forum.model.User;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,7 @@ import java.util.Optional;
 @Repository
 public class UserDAO implements IUserDao {
     @Autowired
-    IUserIdSequence userIdSequence;
+    IIdSequence userIdSequence;
 
     public  String getThatLoginExists() {
         return thatLoginExists;
@@ -51,7 +50,7 @@ public class UserDAO implements IUserDao {
         if (findUserByLogin(user.getLogin()).isPresent()) {
             throw new UserLoginExistException();
         }
-        user.setId(this.userIdSequence.getId());
+        user.setId(this.userIdSequence.getUserId());
         user.setPassword(DigestUtils.md5Hex(user.getPassword()));
         users.add(user);
     }

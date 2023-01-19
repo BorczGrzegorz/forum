@@ -11,7 +11,7 @@
 
 <div id="menu">
     <div th:replace="~{fragmenty.html::menu}"></div>
-    <p th:text="${thatLoginExists}"><b>
+    <p th:text="${thatLoginExists}"></p>
         Wypełnij formularz by się zarejestrować.
     </b></p>
     <form method="post">
@@ -21,6 +21,7 @@
         <input type="password" placeholder="Hasło" th:field="*{user.password}">
         <input type="password" placeholder="Powtórz hasło" name="password2">
         <input type="submit" placeholder="Zarejestruj">
+        <p>Imię i nazwisko powinny zaczynać się dużą literą.</p>
     </form>
 </div>
 </body>

@@ -1,8 +1,8 @@
 package bootcamp.it.exercise.forum.controllers;
 
 import bootcamp.it.exercise.forum.exceptions.UserLoginExistException;
-import bootcamp.it.exercise.forum.interfaces.IAuthenticatorService;
-import bootcamp.it.exercise.forum.interfaces.IUserDao;
+import bootcamp.it.exercise.forum.authenticator.IAuthenticatorService;
+import bootcamp.it.exercise.forum.dataBaseObjects.IUserDao;
 import bootcamp.it.exercise.forum.model.User;
 import bootcamp.it.exercise.forum.exceptions.UserValidationException;
 import bootcamp.it.exercise.forum.services.UserValidationService;
@@ -41,16 +41,17 @@ public class AuthenticatorController {
         this.authenticatorService.authenticate(login, password);
         if (!this.sessionObject.isLogged()) {
 
-            System.out.println("miałeś już sesję");
             return "redirect:/login";
+
         }
         return "redirect:/main";
+
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model) {
         model.addAttribute("sessionObject", this.sessionObject);
-        return "login";  //skumać czy to dobrze,bo chyba nie
+        return "login";
     }
 
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
@@ -63,7 +64,7 @@ public class AuthenticatorController {
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String form(Model model) {
         model.addAttribute("sessionObject", this.sessionObject);
-        model.addAttribute("thatLoginExists",userDao.getThatLoginExists());
+        model.addAttribute("thatLoginExists", userDao.getThatLoginExists());
         model.addAttribute("user", new User());
         return "register";
     }
@@ -71,18 +72,20 @@ public class AuthenticatorController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String medota(@ModelAttribute User user, @RequestParam String password2) {
         try {
-            this.userValidationService.validateRegisterUser(user,password2);
+            this.userValidationService.validateRegisterUser(user, password2);
             if (userDao.findUserByLogin(user.getLogin()).isPresent()) {
-
-              this.userDao.setThatLoginExists("That login exists");
+                this.userDao.setThatLoginExists("***   Spróbuj ponownie z innym loginem.  ***");
                 return "redirect:/register";
             }
+
             userDao.saveUser(user);
             sessionObject.setUser(user);
-        } catch (UserLoginExistException e) {
+        } catch (UserLoginExistException a) {
+            a.getMessage();
+            return "redirect:/register";
+        } catch (UserValidationException e) {
             e.getMessage();
-        }catch (UserValidationException e){
-            e.printStackTrace();
+            return "redirect:/register";
         }
         return "redirect:/main";
     }

@@ -1,4 +1,4 @@
-package bootcamp.it.exercise.forum.interfaces;
+package bootcamp.it.exercise.forum.dataBaseObjects;
 
 import bootcamp.it.exercise.forum.exceptions.UserLoginExistException;
 import bootcamp.it.exercise.forum.model.User;

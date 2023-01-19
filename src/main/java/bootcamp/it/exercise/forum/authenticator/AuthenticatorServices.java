@@ -1,8 +1,8 @@
-package bootcamp.it.exercise.forum.services;
+package bootcamp.it.exercise.forum.authenticator;
 
 import bootcamp.it.exercise.forum.exceptions.UserLoginExistException;
-import bootcamp.it.exercise.forum.interfaces.IAuthenticatorService;
-import bootcamp.it.exercise.forum.interfaces.IUserDao;
+import bootcamp.it.exercise.forum.authenticator.IAuthenticatorService;
+import bootcamp.it.exercise.forum.dataBaseObjects.IUserDao;
 import bootcamp.it.exercise.forum.model.User;
 import bootcamp.it.exercise.forum.session.SessionObject;
 import jakarta.annotation.Resource;
