@@ -1,11 +1,11 @@
 .row {
     text-align: center;
-    border: 2px solid #769752;
+    border: 3px solid #769752;   /*zgniły zielony*/
     border-radius: 10px;
     width: 90%;
     font-size: 20px;
     margin: 10px auto;
-    color: #22212B
+    color: white;  /*niebieski*/
     cursor: default;
     transition: color, background-color 2s;
     -webkit-transition: color, background-color 2s;
@@ -13,14 +13,7 @@
 }
 
 .row:hover {
-    background-color: #2BA7E3;
-    color: white;
-}
-.header{
-background- color : #22212B
-border: 2px solid #769752;
+    background-color: #2BA7E3; /*niebieski*/
+    color: black;
 }
 
-#authorPost{
-display: inline-block !important;
-}

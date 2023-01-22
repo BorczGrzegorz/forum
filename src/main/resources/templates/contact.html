@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <style>
+        body{
+background-repeat: no-repeat;
+background-image: url("krakow.jpg");
+background-size: cover;
+}
+    </style>
     <meta charset="UTF-8">
     <title>Kontakt</title>
   <link rel="stylesheet" href="common.css">
@@ -10,7 +17,7 @@
 <body>
 <div id="logo" th:replace="~{fragmenty.html::logo}"> </div>
 <div th:replace="~{fragmenty.html::menu}"></div>
-<div id="info" th:text="${info}"></div>
+<div class="white" id="info" th:text="${info}"></div>
 
 </body>
 </html>

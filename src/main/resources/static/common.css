@@ -3,17 +3,19 @@ height:300px;
 width: 100%;
 text-align: center;
 }
+
 #menu{
 text-align: center;
-
+ margin-top: 7px;
 }
-#menu a{
+#menu a {
 text- decoration: none;
-color : #22212B;
-font- size:25px;
-border: 2px solid #769752;
+color : white;
+font- size:100px;
+border: 3px solid #769752;
 border-radius: 10px ;
 padding: 2px 15px;
+
 transition:background-color 1s
                   transition: color 1s;
 }
@@ -27,7 +29,6 @@ color: black;
 margin: 20px 200px;
 text-align:center;
 }
-
 
 .center{
 text-align: center;

@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <style>
+    p{
+        color: white;
+    }
+    body{
+        background-repeat: no-repeat;
+        background-image: url("krakow.jpg");
+        background-size: cover;
+    }
+
+
+    </style>
     <meta charset="UTF-8">
     <title>Login</title>
     <link rel="stylesheet" href="common.css">
@@ -8,7 +20,7 @@
     <script src="/userValidator.js"></script>
 </head>
 <body>
-<div id="logo" th:replace="~{fragmenty.html::logo}"> </div>
+<div id="logo" th:replace="~{fragmenty.html::logo}"></div>
 <div th:replace="~{fragmenty.html::menu}"></div>
 <div id="content">
     <form method="post" id="form" onsubmit="return validateLoginForm()">
@@ -20,6 +32,6 @@
     <p>Nie masz konta? Zarejestruj się już teraz!</p>
 
 </div>
-<div class="center"><a  style="color:#769752;" class="button" href="/register">Zarejestruj</a> </div>
+<div class="center"><a style="color:#D4B300;" class="button" href="/register">Zarejestruj</a></div>
 </body>
 </html>

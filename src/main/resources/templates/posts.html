@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <style>
+        body{
+background-repeat: no-repeat;
+background-image: url("krakow.jpg");
+background-size: cover;
+}
+
+    </style>
     <meta charset="UTF-8">
     <title>News</title>
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="post.css">
 </head>
 <body>
-<div id="logo" th:replace="~{fragmenty.html::logo}"> </div>
+<div id="logo" th:replace="~{fragmenty.html::logo}"></div>
 
 <div th:replace="~{fragmenty.html::menu}"></div>
 <div id="content"></div>
 
 <div class="row" th:each="post : ${postList}">
     <div th:text="${post.getHeader}" class="header"></div>
-   <div th:text="${post.getContent}"   class="contenty"></div> <! klasy content jest div rodzicowy ,wyżej!!!!>
-    <div id="authorPost"> <p style="color:green;">To jest autor</p>
-    <div th:text="${post.getAuthor}" class="author"></div></div>
+    <div th:text="${post.getContent}" class="contenty"></div>
+    <! klasy content jest div rodzicowy ,wyżej!!!!>
+    <div class="authorPost"><p style="color:#2BA7E3;">To jest autor</p>
+        <div th:text="${post.getAuthor}" class="author"></div>
+    </div>
 </div>
-
-
 
 
 </body>

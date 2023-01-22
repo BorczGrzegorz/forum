@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <style>
+        body{
+background-repeat: no-repeat;
+background-image: url("krakow.jpg");
+background-size: cover;
+}
+    </style>
     <meta charset="UTF-8">
     <title>Register</title>
     <link rel="stylesheet" href="common.css">
@@ -12,7 +19,7 @@
 <div id="menu">
     <div th:replace="~{fragmenty.html::menu}"></div>
     <p th:text="${thatLoginExists}"></p>
-        Wypełnij formularz by się zarejestrować.
+       <p style="color:white;" > Wypełnij formularz by się zarejestrować. </p>
     </b></p>
     <form method="post">
         <input type="text" placeholder="Imie" th:field="*{user.name}">
@@ -21,7 +28,9 @@
         <input type="password" placeholder="Hasło" th:field="*{user.password}">
         <input type="password" placeholder="Powtórz hasło" name="password2">
         <input type="submit" placeholder="Zarejestruj">
-        <p>Imię i nazwisko powinny zaczynać się dużą literą.</p>
+
+
+        <p style="color:white;" >Imię i nazwisko powinny zaczynać się dużą literą.</p>
     </form>
 </div>
 </body>
