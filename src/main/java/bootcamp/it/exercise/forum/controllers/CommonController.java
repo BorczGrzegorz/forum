@@ -21,10 +21,10 @@ public class CommonController {
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String main(Model model) {
-        String welcome = "Witamy na stronie głównej";
+        String welcome = "Witamy na stronie głównej forum Kraków";
         model.addAttribute("welcome", welcome);
         model.addAttribute("sessionObject",sessionObject);
-        model.addAttribute("postList",postDAO.getPosts());
+
 
         return "main";
     }
@@ -39,16 +39,5 @@ public class CommonController {
         model.addAttribute("sessionObject",sessionObject);
         return "contact";
     }
-
-    @RequestMapping(path = "/posts", method = RequestMethod.GET)
-    public String news(Model model) {
-        String posts = "Jakieś posty";
-        model.addAttribute("posts", posts);
-        model.addAttribute("sessionObject",this.sessionObject);
-        return "posts";
-        ////zrobić szablon news:)
-
-    }
-
 
 }

@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface IPostDAO {
-    Optional<List<Post>> getPosts();
+     List<Post> getPosts();
 
     void addPost(Post post);
 }

@@ -16,17 +16,19 @@ public class PostDAO implements IPostDAO {
 
 
     private final List<Post> postList = new ArrayList<>();
-    PostDAO(){
-        postList.add(new Post(1,"Michał Kruczała","Podwyżki cen komunikacji mejskiej nie dla krakowian","Nie będzie drożej i chuj"));
-        postList.add(new Post(2,"Johny Bravo","Pyhtvyttfytvejskiej nie dla krakowian","Nie będzie drożej i chuj"));
-        postList.add(new Post(3,"kot Jinks","Podygfvyvnikacji mejskiej nie dla krakowian","Nie będzie drożej i chuj"));
-        postList.add(new Post(4,"Myszka miki","miałen komunikacji mejskiej nie dla krakowian","Nie będzie drożej i chuj"));
-        postList.add(new Post(5,"kaczor donald","mau majijunbhkiej nie dla krakowian","Nie będzie drożej i chuj"));
+
+    PostDAO() {
+        postList.add(new Post(1, "Michał Kruczała", "Podwyżki cen komunikacji mejskiej nie dla krakowian", "Nie będzie drożej i chuj"));
+        postList.add(new Post(2, "Johny Bravo", "klata jak u pirata", "Ile razy ćwiczycie w tygodniu?"));
+        postList.add(new Post(3, "kot Jinks", "Podygfvyvnikacji mejskiej nie dla krakowian", "NIenawidzę ty myszy :P wy też?"));
+        postList.add(new Post(4, "Myszka miki", "USZY!?? SERIO??", "czy łądne mam uszy?"));
+        postList.add(new Post(5, "kaczor donald", "kwa kwa?", ""));
     }
-       //idSequence.getPostId()
+
+    //idSequence.getPostId()
     @Override
-    public Optional<List<Post>> getPosts() {
-        return Optional.of(postList);
+    public List<Post> getPosts() {
+        return postList;
     }
 
     @Override

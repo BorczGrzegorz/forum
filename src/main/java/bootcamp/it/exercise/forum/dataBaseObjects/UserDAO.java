@@ -31,6 +31,7 @@ public class UserDAO implements IUserDao {
 
     UserDAO() {
         users.add(new User(1, "Michał", "Kruczała", "admin", "21232f297a57a5a743894a0e4a801fc3", User.Role.ADMIN));
+        users.add(new User(2, "Joanna", "Kowalska", "minimum", "e383234c8c5c6cf7eb44a3208e26d50f", User.Role.MODERATOR));
     }
 
 

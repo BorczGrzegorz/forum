@@ -25,7 +25,7 @@ public class Post {
         this.author = author;
     }
     public String getHeader() {
-        return header;
+        return this.header;
     }
 
     public void setHeader(String header) {
@@ -33,7 +33,7 @@ public class Post {
     }
 
     public String getContent() {
-        return content;
+        return this.content;
     }
 
     public void setContent(String content) {
@@ -48,3 +48,13 @@ public class Post {
         this.id = id;
     }
 }
+
+
+
+
+
+
+
+
+
+
