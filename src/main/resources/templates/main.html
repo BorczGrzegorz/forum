@@ -7,26 +7,25 @@ background-repeat: no-repeat;
 background-image: url("krakow.jpg");
 background-size: cover;
 }
+h1{
+color: white;
+border-radius: 6px;
+background-color: #769752;
+text-align: center;
+}
     </style>
     <meta charset="UTF-8">
     <title>Forum Krakowskie</title>
     <link rel="stylesheet" href="common.css">
-    <link rel="stylesheet" href="top.css">
 
 </head>
 <body>
-<h1 class="center">
-    <div th:text="${welcome}"></div>
-    <a th:text="${successfullyLogged}"></a>
-</h1>
+<h1 th:text="${welcome}"></h1>
 
 <div>
     <div id="logo" th:replace="~{fragmenty.html::logo}"></div>
 </div>
 <div th:replace="~{fragmenty.html::menu}"></div>
-
-
-
 
 </body>
 </html>

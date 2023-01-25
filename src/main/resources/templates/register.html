@@ -18,7 +18,7 @@ background-size: cover;
 
 <div id="menu">
     <div th:replace="~{fragmenty.html::menu}"></div>
-    <p th:text="${thatLoginExists}"></p>
+    <h1 style="color:red;" th:text="${thatLoginExists}"></h1>
        <p style="color:white;" > Wypełnij formularz by się zarejestrować. </p>
     </b></p>
     <form method="post">
@@ -28,8 +28,6 @@ background-size: cover;
         <input type="password" placeholder="Hasło" th:field="*{user.password}">
         <input type="password" placeholder="Powtórz hasło" name="password2">
         <input type="submit" placeholder="Zarejestruj">
-
-
         <p style="color:white;" >Imię i nazwisko powinny zaczynać się dużą literą.</p>
     </form>
 </div>

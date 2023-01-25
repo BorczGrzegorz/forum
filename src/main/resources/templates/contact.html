@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <style>
         body{
 background-repeat: no-repeat;
 background-image: url("krakow.jpg");
 background-size: cover;
+
+}
+h1{
+font-family: "Sofia", sans-serif;
+color: white;
+border-radius: 6px;
+background-color: #769752;
 }
     </style>
     <meta charset="UTF-8">
@@ -17,7 +25,7 @@ background-size: cover;
 <body>
 <div id="logo" th:replace="~{fragmenty.html::logo}"> </div>
 <div th:replace="~{fragmenty.html::menu}"></div>
-<div class="white" id="info" th:text="${info}"></div>
+<h1 class="white" id="info" th:text="${info}"></h1>
 
 </body>
 </html>

@@ -66,6 +66,7 @@ public class AuthenticatorController {
         model.addAttribute("sessionObject", this.sessionObject);
         model.addAttribute("thatLoginExists", userDao.getThatLoginExists());
         model.addAttribute("user", new User());
+        this.userDao.setThatLoginExists("");
         return "register";
     }
 

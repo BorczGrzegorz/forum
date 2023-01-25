@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:display="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
     <style>
         body{
 background-repeat: no-repeat;
 background-image: url("krakow.jpg");
 background-size: cover;
+
+}
+.row{
+font-family: "Audiowide", sans-serif;
 }
 
     </style>
@@ -21,7 +26,8 @@ background-size: cover;
 <div id="content"></div>
 
 <div class="row" th:each="post : ${postList}">
-    <div th:text="${post.getHeader}" class="header"></div>
+
+    <div style="font-size:1vw"><h1 th:text="${post.getHeader}"></h1></div>
     <div th:text="${post.getContent}" class="contenty"></div>
     <! klasy content jest div rodzicowy ,wyżej!!!!>
     <div class="authorPost"><p style="color:#2BA7E3;">To jest autor</p>
