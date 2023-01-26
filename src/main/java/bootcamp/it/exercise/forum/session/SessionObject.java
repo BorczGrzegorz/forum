@@ -29,5 +29,12 @@ public class SessionObject {
         }
         return this.user.getRole().equals(User.Role.MODERATOR);
     }
+
+    public boolean isAdmin() {
+        if (!isLogged()) {
+            return false;
+        }
+        return this.user.getRole().equals(User.Role.ADMIN);
+    }
 }
 

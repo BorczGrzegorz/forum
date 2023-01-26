@@ -44,7 +44,7 @@ public class AuthenticatorController {
             return "redirect:/login";
 
         }
-        return "redirect:/main";
+        return "redirect:/posts";
 
     }
 
@@ -71,7 +71,7 @@ public class AuthenticatorController {
     }
 
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String medota(@ModelAttribute User user, @RequestParam String password2) {
+    public String register(@ModelAttribute User user, @RequestParam String password2) {
         try {
             this.userValidationService.validateRegisterUser(user, password2);
             if (userDao.findUserByLogin(user.getLogin()).isPresent()) {
@@ -88,6 +88,6 @@ public class AuthenticatorController {
             e.getMessage();
             return "redirect:/register";
         }
-        return "redirect:/main";
+        return "redirect:/posts";
     }
 }

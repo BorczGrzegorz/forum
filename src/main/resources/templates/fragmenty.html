@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="common.css">
+<style>
 
+</style>
 </head>
 <body>
 <div id="logo" th:fragment="logo">
@@ -14,9 +16,16 @@
     <a href="/main">Strona główna</a>
     <a href="/posts">Nowinki i Posty</a>
     <a href="/contact">Kontakt</a>
-    <a th:if="${!sessionObject.isLogged()}" href="/register" class="button">Zarejestruj</a>
-    <a th:if="${!sessionObject.isLogged()}" href="/login" class="button">Zaloguj</a>
-    <a th:if="${sessionObject.isLogged()}" href="/logout" class="button">Wyloguj</a>
+    <a th:if="${!sessionObject.isLogged()}" href="/register" >Zarejestruj</a>
+    <a th:if="${!sessionObject.isLogged()}" href="/login" >Zaloguj</a>
+    <a th:if="${sessionObject.isLogged()}" href="/logout" >Wyloguj</a>
+</div>
+<div th:fragment="postMenu">
+    <div><a id="menuPost" th:if="${sessionObject.isLogged()}" href="/add/post" class="button">Dodaj Post</a></div>
+
+
+
+
 </div>
 </body>
 </html>

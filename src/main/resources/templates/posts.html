@@ -12,8 +12,28 @@ background-size: cover;
 .row{
 font-family: "Audiowide", sans-serif;
 }
+.button {
+font-family: "Audiowide", sans-serif;
+  background-color: #769752;
+  border: 3px solid #769752;
+  border-radius: 7px;
+  color: white;
+  padding: 7px 21px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 70px;
+  cursor: grab;
+}
 
-
+.button:hover {
+    background-color: #2BA7E3; /*niebieski*/
+    color: black;
+     transition: color, background-color 2s;
+    -webkit-transition: color, background-color 2s;
+    -ms-transition: color, background-color 2s;
+    }
     </style>
     <meta charset="UTF-8">
     <title>Posty</title>
@@ -24,17 +44,15 @@ font-family: "Audiowide", sans-serif;
 <div id="logo" th:replace="~{fragmenty.html::logo}"></div>
 
 <div th:replace="~{fragmenty.html::menu}"></div>
-<div id="content"></div>
-<div><a th:if="${sessionObject.isModerator()}" href="/add/post" class="button">Dodaj Post</a></div>
+<div class="postMenu" th:replace="~{fragmenty.html::postMenu}"></div>
 
 <div class="row" th:each="post : ${postList}">
-
     <div style="font-size:1vw"><h1 th:text="${post.getHeader}"></h1></div>
     <div th:text="${post.getContent}" class="contenty"></div>
-    <! klasy content jest div rodzicowy ,wyżej!!!!>
-    <div class="authorPost"><p style="color:#2BA7E3;">To jest autor</p>
-        <div th:text="${post.getAuthor}" class="author"></div>
-    </div>
+    <div class="authorPost"><p style="color:#2BA7E3;">To jest autor</p></div>
+    <div th:text="${post.getAuthor}" class="author"></div>
+    <div><a th:if="${sessionObject.isModerator()}" href="/add/post" class="button">Edytuj Post</a></div>
+    <div><a th:if="${sessionObject.isAdmin()}" href="/add/post" class="button">Edytuj Post</a></div>
 </div>
 
 
