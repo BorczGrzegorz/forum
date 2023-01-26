@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
     <style>
     p{
         color: white;
@@ -10,8 +11,9 @@
         background-image: url("krakow.jpg");
         background-size: cover;
     }
-
-
+    #zarejestruj{
+   font-family: "Sofia", sans-serif;
+    }
     </style>
     <meta charset="UTF-8">
     <title>Login</title>
@@ -32,6 +34,6 @@
     <p>Nie masz konta? Zarejestruj się już teraz!</p>
 
 </div>
-<div class="center"><a style="color:#D4B300;" class="button" href="/register">Zarejestruj</a></div>
+<div class="center"><a id="zarejestruj" style="color:#D4B300;" class="button" href="/register">Zarejestruj</a></div>
 </body>
 </html>

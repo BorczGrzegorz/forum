@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:display="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
     <style>
@@ -13,9 +13,10 @@ background-size: cover;
 font-family: "Audiowide", sans-serif;
 }
 
+
     </style>
     <meta charset="UTF-8">
-    <title>News</title>
+    <title>Posty</title>
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="post.css">
 </head>
@@ -24,6 +25,7 @@ font-family: "Audiowide", sans-serif;
 
 <div th:replace="~{fragmenty.html::menu}"></div>
 <div id="content"></div>
+<div><a th:if="${sessionObject.isModerator()}" href="/add/post" class="button">Dodaj Post</a></div>
 
 <div class="row" th:each="post : ${postList}">
 

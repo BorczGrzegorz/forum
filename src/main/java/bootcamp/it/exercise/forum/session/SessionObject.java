@@ -22,5 +22,12 @@ public class SessionObject {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public boolean isModerator() {
+        if (!isLogged()) {
+            return false;
+        }
+        return this.user.getRole().equals(User.Role.MODERATOR);
+    }
 }
 

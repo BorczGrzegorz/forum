@@ -26,6 +26,8 @@ public class UserDAO implements IUserDao {
     }
 
 
+
+
     private static String thatLoginExists = "";
     private static final List<User> users = new ArrayList<>();
 
@@ -54,6 +56,17 @@ public class UserDAO implements IUserDao {
         user.setId(this.userIdSequence.getUserId());
         user.setPassword(DigestUtils.md5Hex(user.getPassword()));
         users.add(user);
+    }
+    @Override
+    public void makeUserToModerator(User user) {
+        user.setRole(User.Role.MODERATOR);
+
+    }
+
+    @Override
+    public void makeUserToAdmin(User user) {
+        user.setRole(User.Role.ADMIN);
+
     }
 
 }

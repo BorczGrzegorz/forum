@@ -21,6 +21,7 @@ public class PostController {
     public String news(Model model) {
         model.addAttribute("postList",postDAO.getPosts());
         model.addAttribute("sessionObject",this.sessionObject);
+        model.addAttribute("sessionObject.isModerator()",sessionObject.isModerator());
         return "posts";
 
     }

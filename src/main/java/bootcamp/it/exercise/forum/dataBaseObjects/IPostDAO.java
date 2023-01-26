@@ -9,4 +9,5 @@ public interface IPostDAO {
      List<Post> getPosts();
 
     void addPost(Post post);
+    void editPost(Post post);
 }

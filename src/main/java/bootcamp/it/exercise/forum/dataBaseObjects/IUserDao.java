@@ -11,5 +11,9 @@ public interface IUserDao {
    void saveUser(User user) throws UserLoginExistException;
    String getThatLoginExists();
    void setThatLoginExists(String thatLoginExists);
+   void makeUserToModerator(User user);
+   void makeUserToAdmin(User user);
+
+
 
 }

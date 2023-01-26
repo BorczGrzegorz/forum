@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.ToDoubleBiFunction;
 
 @Repository
 public class PostDAO implements IPostDAO {
@@ -34,6 +35,12 @@ public class PostDAO implements IPostDAO {
     @Override
     public void addPost(Post news) {
         postList.add(news);
+    }
+
+    @Override
+    public void editPost(Post post) {
+       // post.setAuthor();
+
     }
 
 
