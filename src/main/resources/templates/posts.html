@@ -23,16 +23,18 @@ font-family: "Audiowide", sans-serif;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  margin: 4px 70px;
+  margin: 4px 3px;
   cursor: grab;
 }
-
 .button:hover {
     background-color: #2BA7E3; /*niebieski*/
     color: black;
      transition: color, background-color 2s;
     -webkit-transition: color, background-color 2s;
     -ms-transition: color, background-color 2s;
+    }
+    #postMenu{
+    margin-left: 70px;
     }
     </style>
     <meta charset="UTF-8">
@@ -41,20 +43,19 @@ font-family: "Audiowide", sans-serif;
     <link rel="stylesheet" href="post.css">
 </head>
 <body>
-<div id="logo" th:replace="~{fragmenty.html::logo}"></div>
-
-<div th:replace="~{fragmenty.html::menu}"></div>
-<div class="postMenu" th:replace="~{fragmenty.html::postMenu}"></div>
+    <div id="logo" th:replace="~{fragmenty.html::logo}"></div>
+    <div th:replace="~{fragmenty.html::menu}"></div>
+    <div id="postId" th:replace="~{fragmenty.html::postMenu}"></div>
 
 <div class="row" th:each="post : ${postList}">
     <div style="font-size:1vw"><h1 th:text="${post.getHeader}"></h1></div>
     <div th:text="${post.getContent}" class="contenty"></div>
     <div class="authorPost"><p style="color:#2BA7E3;">To jest autor</p></div>
     <div th:text="${post.getAuthor}" class="author"></div>
-    <div><a th:if="${sessionObject.isModerator()}" href="/add/post" class="button">Edytuj Post</a></div>
-    <div><a th:if="${sessionObject.isAdmin()}" href="/add/post" class="button">Edytuj Post</a></div>
+    <a th:if="${sessionObject.isModerator()}" href="/add/post" class="button">Edytuj Post</a>
+    <a th:if="${sessionObject.isAdmin()}" href="/add/post" class="button">Edytuj Post</a>
+    <a th:if="${sessionObject.isLogged()}" href="/add/comment" class="button">Skomentuj</a>
 </div>
-
 
 </body>
 </html>

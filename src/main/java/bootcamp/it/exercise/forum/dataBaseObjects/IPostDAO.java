@@ -10,4 +10,7 @@ public interface IPostDAO {
 
     void addPost(Post post);
     void editPost(Post post);
+    Optional<Post> getPostById(int id);
+
+
 }

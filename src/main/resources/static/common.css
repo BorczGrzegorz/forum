@@ -20,7 +20,7 @@ transition:background-color 1s
                   transition: color 1s;
 }
 #menu a :hover{
-border color:
+border color: green;
 background-color : #22212B;;
 color: black;
 
@@ -33,43 +33,5 @@ text-align:center;
 .center{
 text-align: center;
 }
-#postMenu a {
-text- decoration: none;
-color : white;
-font- size:100px;
-border: 3px solid #769752;
-border-radius: 10px ;
-padding: 2px 15px;
-
-transition:background-color 1s
-                  transition: color 1s;
-}
-#postMenu a :hover{
-border color:
-background-color : #22212B;;
-color: black;
-
-}
 
 
-/*{
-     background: orange;
-                overflow: hidden;
-                color: black;
-
-}
-#logo img{
-  width: 100%
-  center;
-   }
-
-.logo{
-background: solid green;
-                display : flex;
-                justify-content:center;
-                    color: black;
-}
-.menu{
- justify-content:center;
-  display : flex;
-} */

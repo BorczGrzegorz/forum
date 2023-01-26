@@ -25,5 +25,12 @@ public class PostController {
         return "posts";
 
     }
+    @RequestMapping(path = "/posts/edit/", method = RequestMethod.GET)
+    public String editPost(Model model) {
+        model.addAttribute("postList",postDAO.getPosts());
+        model.addAttribute("sessionObject",this.sessionObject);
+        // model.addAttribute("sessionObject.isModerator()",sessionObject.isModerator());
+        return "editPostForm";
 
+    }
 }
