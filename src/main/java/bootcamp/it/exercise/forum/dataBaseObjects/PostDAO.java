@@ -24,6 +24,8 @@ public class PostDAO implements IPostDAO {
         postList.add(new Post(3, "kot Jinks", "Podygfvyvnikacji mejskiej nie dla krakowian", "NIenawidzę ty myszy :P wy też?"));
         postList.add(new Post(4, "Myszka miki", "USZY!?? SERIO??", "czy łądne mam uszy?"));
         postList.add(new Post(5, "kaczor donald", "kwa kwa?", ""));
+        postList.add(new Post(5, "kaczor donald", "kwa kwa?", ""));
+
     }
 
     //idSequence.getPostId()

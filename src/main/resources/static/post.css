@@ -1,7 +1,7 @@
 .row {
     text-align: center;
     border: 3px solid #769752;   /*zgniły zielony*/
-    border-radius: 10px;
+    border-radius: 10px 66px;
     width: 90%;
     font-size: 20px;
     margin: 10px auto;
