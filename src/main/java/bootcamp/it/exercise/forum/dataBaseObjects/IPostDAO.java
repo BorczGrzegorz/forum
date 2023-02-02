@@ -9,7 +9,7 @@ public interface IPostDAO {
      List<Post> getPosts();
 
     void addPost(Post post);
-    void editPost(Post post);
+    void editPost(Post post,int oldID);
     Optional<Post> getPostById(int id);
 
 

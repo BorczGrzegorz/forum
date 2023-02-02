@@ -21,7 +21,7 @@ background-size: cover;
     <div th:replace="~{fragmenty.html::menu}"></div>
     <h1 style="color:red;" th:text="${thatLoginExists}"></h1>
        <p style="color:white;" > Wypełnij formularz by się zarejestrować. </p>
-    </b></p>
+
     <form method="post">
         <input type="text" placeholder="Imie" th:field="*{user.name}">
         <input type="text" placeholder="Nazwisko" th:field="*{user.surname}">

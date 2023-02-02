@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
 <head>
     <meta charset="UTF-8">
     <title>Edit</title>
@@ -22,8 +21,10 @@ background-size: cover;
         <form method="post">
             <textarea th:field="*{post.header}" rows="2" cols="70"></textarea><br>
             <textarea th:field="*{post.content}" rows="7" cols="100">  </textarea><br>
-            <input type="text" placeholder="Autor" class="text-input" id="author" th:field="*{post.author}"><br>
+            autor:<input type="text" placeholder="Autor" class="text-input" id="author" th:field="*{post.author}">
+              postId:<input type="text" placeholder="Id" class="text-input" id="id" th:field="*{post.id}"><br>
             <input type="submit" value="OK" class="button">
+            <input type="reset">
         </form>
     </div>
 

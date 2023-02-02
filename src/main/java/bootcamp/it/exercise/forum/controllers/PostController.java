@@ -37,15 +37,15 @@ public class PostController {
         model.addAttribute("post", postById.get());
         return "edit";
     }
-    @RequestMapping(path = "/post/edit/{postID:.*}", method = RequestMethod.POST)
+    @RequestMapping(path = "/post/edit/{postId}", method = RequestMethod.POST)
     public String editPost(@ModelAttribute Post post,
                            @PathVariable int postId) {
         try {
-            post.setId(postId);
-            postDAO.editPost(post);
+            postDAO.editPost(post,postId);
         } catch (Exception e) {
            e.printStackTrace();
-           return "redirect:/edit/post/"+postId;
+            System.out.println("weszło do catch");
+            return "redirect:/edit/post/"+postId;
         }
         return "redirect:/posts";
     }
