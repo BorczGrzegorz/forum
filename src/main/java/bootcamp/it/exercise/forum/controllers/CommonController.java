@@ -25,7 +25,6 @@ public class CommonController {
         model.addAttribute("welcome", welcome);
         model.addAttribute("sessionObject",sessionObject);
 
-
         return "main";
     }
 

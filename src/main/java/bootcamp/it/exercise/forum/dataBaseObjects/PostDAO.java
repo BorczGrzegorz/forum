@@ -19,7 +19,10 @@ public class PostDAO implements IPostDAO {
     private final List<Post> postList = new ArrayList<>();
 
     PostDAO() {
-        postList.add(new Post(1, "Michał Kruczała", "Podwyżki cen komunikacji mejskiej nie dla krakowian", "Nie będzie drożej i chuj"));
+        postList.add(new Post(1, "Michał Kruczała", "Podwyżki cen komunikacji mejskiej nie dla krakowian",
+                "Nie będzie drożej i chuj,kanary dalej chodza i sprawdzją czy masz bilet i wgl i w szczególe." +
+                        "A tak w ogóle to nie lubię tramwajów tzw: akwarium.Ciepło w nich i duszno i wgl człowiek na " +
+                        "człowieku i śmierdzi         tak to już bywa...A wy których tramwajów nie lubicie?"));
         postList.add(new Post(2, "Johny Bravo", "klata jak u pirata", "Ile razy ćwiczycie w tygodniu?"));
         postList.add(new Post(3, "kot Jinks", "Podygfvyvnikacji mejskiej nie dla krakowian", "NIenawidzę ty myszy :P wy też?"));
         postList.add(new Post(4, "Myszka miki", "USZY!?? SERIO??", "czy łądne mam uszy?"));
@@ -41,14 +44,21 @@ public class PostDAO implements IPostDAO {
 
     @Override
     public void editPost(Post post) {
-       // post.setAuthor();
+        post.setId(post.getId());
+        post.setHeader(post.getHeader());
+        post.setContent(post.getContent());
+        post.setAuthor(post.getAuthor());
 
     }
 
     @Override
     public Optional<Post> getPostById(int id) {
-        // ......  dorobić :)}
-         return Optional.empty();
+        for (Post post : this.postList) {
+            if (post.getId() == id) {
+                return Optional.of(post);
+            }
+        }
+        return Optional.empty();
     }
 
 }

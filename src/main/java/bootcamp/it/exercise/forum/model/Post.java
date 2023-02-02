@@ -7,7 +7,7 @@ public class Post {
     private String author;
 
 
-    public Post(int id, String author, String header, String content) {//, Comment comment) {
+    public Post(int id, String author, String header, String content) {
         this.author = author;
         this.id = id;
         this.header = header;
