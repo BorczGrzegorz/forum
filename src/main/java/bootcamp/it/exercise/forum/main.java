@@ -21,4 +21,14 @@ public class main {
         System.out.println(localDateTime);
         System.out.println(DigestUtils.md5Hex("minimum"));
     }
+    // <div>
+    //        <form method="post">
+    //            <textarea th:field="*{post.header}" rows="2" cols="70"></textarea><br>
+    //            <textarea th:field="*{post.content}" rows="7" cols="100">  </textarea><br>
+    //            autor:<input type="text" placeholder="Autor" class="text-input" id="author" th:field="*{post.author}">
+    //              postId:<input type="text" placeholder="Id" class="text-input" id="id" th:field="*{post.id}"><br>
+    //            <input type="submit" value="OK" class="button">
+    //            <input type="reset">
+    //        </form>
+    //    </div>
 }

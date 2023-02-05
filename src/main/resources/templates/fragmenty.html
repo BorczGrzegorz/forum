@@ -21,8 +21,7 @@
     <a th:if="${sessionObject.isLogged()}" href="/logout" >Wyloguj</a>
 </div>
 <div id="postMenu" th:fragment="postMenu">
-    <div><a th:if="${sessionObject.isLogged()}" href="/add/post" class="button">Dodaj Post</a></div>
-
+    <div><a th:if="${sessionObject.isLogged()}" href="/add" class="button">Dodaj Post</a></div>
 </div>
 </body>
 </html>

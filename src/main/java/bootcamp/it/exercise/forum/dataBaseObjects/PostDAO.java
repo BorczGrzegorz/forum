@@ -19,7 +19,7 @@ public class PostDAO implements IPostDAO {
     private final List<Post> postList = new ArrayList<>();
 
     PostDAO() {
-        postList.add(new Post(1, "Zbigniew Wodecki123", "!!!!!!!!!!!**Podwyżki cen komunikacji mejskiej nie dla krakowian***!!!!",
+        postList.add(new Post(1, "Zbigniew Wodecki", "!!!!!!!!!!!**Podwyżki cen komunikacji mejskiej nie dla krakowian***!!!!",
                 "Będzie drożej i tyle,kanary dalej chodza i sprawdzją czy masz bilet i wgl i w szczególe.A tak" +
                         " w ogóle to nie lubię tramwajów tzw: akwarium.Ciepło w nich i duszno i wgl człowiek na człowieku" +
                         " i śmierdzi ... tak to już bywa...A wy których tramwajów nie lubicie?"));
@@ -31,7 +31,6 @@ public class PostDAO implements IPostDAO {
 
     }
 
-    //idSequence.getPostId()
     @Override
     public List<Post> getPosts() {
         return postList;
@@ -53,9 +52,6 @@ public class PostDAO implements IPostDAO {
             postList.set(post.getId(),post);
             postList.remove(postById.get());
         }
-
-
-
     }
 
     @Override
@@ -67,5 +63,4 @@ public class PostDAO implements IPostDAO {
         }
         return Optional.empty();
     }
-
 }
