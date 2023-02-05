@@ -1,0 +1,16 @@
+.addPost{
+text-align: center;
+border: 3px solid #769752;
+border-radius: 2px 6px;
+padding: 2px 15px;
+margin-top: 3px;
+
+}
+#addPostBorder{
+border: 5px dotted #2BA7E3;
+text-align: center;
+margin-top: 20px;
+margin-left: 77px;
+margin-right: 77px;
+
+}

@@ -63,6 +63,7 @@ font-family: "Audiowide", sans-serif;
     <a th:if="${sessionObject.isAdmin()}" th:href="@{/edit/{id}(id=${post.id})}" class="button">Edytuj Post</a>
     <a th:if="${sessionObject.isLogged()}" th:href="@{/commment/{id}(id=${post.id})}" class="button">Skomentuj</a>
 </div>
+    <div class="center"> <IMG SRC="pass.gif" class="center"></div>
 
 </body>
 </html>

@@ -34,33 +34,32 @@ font-family: "Audiowide", sans-serif;
     -webkit-transition: color, background-color 2s;
     -ms-transition: color, background-color 2s;
     }
-    #postMenu{
-    margin-left: 70px;
-    }
     #feature{
       font-family: "Sofia", sans-serif;
     }
+    h1{
 
+    }
     </style>
     <meta charset="UTF-8">
     <title>Dodaj Post</title>
     <link rel="stylesheet" href="common.css">
     <link rel="stylesheet" href="post.css">
+    <link rel="stylesheet" href="addPost.css">
 </head>
 <body>
 <div id="logo" th:replace="~{fragmenty.html::logo}"></div>
 <div th:replace="~{fragmenty.html::menu}"></div>
-<div id="postId" th:replace="~{fragmenty.html::postMenu}"></div>
 
 
-<div>
+
+<div id="addPostBorder" class="center">
     <form method="post">
-
-        <input type="text" placeholder="content" class="text-input" th:field="*{post.header}">
-        <input type="text" placeholder="content" class="text-input" th:field="*{post.content}">
-        autor:<input type="text" placeholder="Autor" class="text-input" id="author" th:field="*{post.author}">
-        postId:<input type="text" placeholder="Id" class="text-input" id="id" th:field="*{post.id}"><br>
-        <input type="submit" value="OK" class="button">
+        <textarea class="addPost" placeholder="Temat" th:field="*{post.header}" rows="2" cols="100"></textarea><br>
+        <textarea class="addPost" placeholder="Treść posta" th:field="*{post.content}" rows="7" cols="100">  </textarea><br>
+        <input  class="addPost" type="text" placeholder="Autor"  id="author" th:field="*{post.author}">
+        <input type="submit" value="Dodaj Post" class="button">
+        <input type="reset" value="Resetuj Treść" class="button">
     </form>
 </div>
 
@@ -73,6 +72,6 @@ font-family: "Audiowide", sans-serif;
     <a th:if="${sessionObject.isModerator()}" th:href="@{/edit/{id}(id=${post.Id})}" class="button">Edytuj Post</a>
     <a th:if="${sessionObject.isLogged()}" th:href="@{/post/commment/{id}(id=${post.Id})}" class="button">Skomentuj</a>
 </div>
-
+<div class="center"> <IMG SRC="pass.gif" class="center"></div>
 </body>
 </html>

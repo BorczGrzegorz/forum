@@ -21,16 +21,7 @@ public class JebanyKontroller {
     @Resource
     SessionObject sessionObject;
 
-    @RequestMapping(path = "/edit/{postId}", method = RequestMethod.GET)
-    public String edit(Model model, @PathVariable int postId) {
-        Optional<Post> postById = postDAO.getPostById(postId);
-        if (postById.isEmpty()) {
-            return "redirect:/posts";
-        }
-        model.addAttribute("sessionObject", this.sessionObject);
-        model.addAttribute("post", postById.get());
-        return "posts";
-    }
+
 
     @RequestMapping(path = "/edit/{postId}", method = RequestMethod.POST)
     public String edit(@ModelAttribute Post post,
@@ -39,7 +30,7 @@ public class JebanyKontroller {
             postDAO.editPost(post, postId);
         } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("weszło do catch");
+                        System.out.println("weszło do catch");
             return "redirect:/edit/post/" + postId;
         }
         return "redirect:/posts";
