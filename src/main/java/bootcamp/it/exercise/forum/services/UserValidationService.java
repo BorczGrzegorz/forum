@@ -8,7 +8,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @Service
-public class UserValidationService {
+public class  UserValidationService {
     public void validateUserTryingToLogIn(String login, String password) throws UserValidationException {
         validateLogin(login);
         validatePassword(password);

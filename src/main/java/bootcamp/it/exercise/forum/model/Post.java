@@ -1,17 +1,27 @@
 package bootcamp.it.exercise.forum.model;
 
+import jakarta.persistence.*;
+
+import java.util.Set;
+
+@Entity(name = "tPost")
 public class Post {
     private String header;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private Set<Comment> comments;
     private String content;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String author;
 
 
-    public Post(int id, String author, String header, String content) {
+    public Post(int id, String author, String header, String content, Set<Comment> comments) {
         this.author = author;
         this.id = id;
         this.header = header;
         this.content = content;
+        this.comments = comments;
     }
 
     public Post() {
@@ -46,6 +56,10 @@ public class Post {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setComments(Set<Comment> comments) {
+        this.comments = comments;
     }
 }
 

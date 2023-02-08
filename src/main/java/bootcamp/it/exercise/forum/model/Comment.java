@@ -1,13 +1,24 @@
 package bootcamp.it.exercise.forum.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+@Entity(name = "tComment")
 public class Comment {
-     private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private String content;
+
+    public Comment() {
+    }
 
     public Comment(int id, String content) {
         this.id = id;
         this.content = content;
     }
+
 
     public int getId() {
         return id;

@@ -1,5 +1,4 @@
 package bootcamp.it.exercise.forum;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

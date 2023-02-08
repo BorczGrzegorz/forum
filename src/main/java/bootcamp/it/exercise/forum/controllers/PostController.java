@@ -47,6 +47,7 @@ public class PostController {
         }
         model.addAttribute("sessionObject", this.sessionObject);
         model.addAttribute("post", postById.get());
+        model.addAttribute("postList",postDAO.getPosts());
         return "edit";
     }
 

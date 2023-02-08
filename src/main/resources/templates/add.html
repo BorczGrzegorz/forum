@@ -37,9 +37,7 @@ font-family: "Audiowide", sans-serif;
     #feature{
       font-family: "Sofia", sans-serif;
     }
-    h1{
 
-    }
     </style>
     <meta charset="UTF-8">
     <title>Dodaj Post</title>
@@ -50,9 +48,6 @@ font-family: "Audiowide", sans-serif;
 <body>
 <div id="logo" th:replace="~{fragmenty.html::logo}"></div>
 <div th:replace="~{fragmenty.html::menu}"></div>
-
-
-
 <div id="addPostBorder" class="center">
     <form method="post">
         <textarea class="addPost" placeholder="Temat" th:field="*{post.header}" rows="2" cols="100"></textarea><br>

@@ -32,9 +32,9 @@ public class UserDAO implements IUserDao {
     private static final List<User> users = new ArrayList<>();
 
     UserDAO() {
-        users.add(new User(1, "Michał", "Kruczała", "admin", "21232f297a57a5a743894a0e4a801fc3", User.Role.ADMIN));
-        users.add(new User(2, "Joanna", "Kowalska", "minimum", "e383234c8c5c6cf7eb44a3208e26d50f", User.Role.MODERATOR));
-        users.add(new User(2, "Natalia", "Krzystanek", "nati123", "e383234c8c5c6cf7eb44a3208e26d50f", User.Role.USER));
+//        users.add(new User(1, "Michał", "Kruczała", "admin", "21232f297a57a5a743894a0e4a801fc3", User.Role.ADMIN));
+//        users.add(new User(2, "Joanna", "Kowalska", "minimum", "e383234c8c5c6cf7eb44a3208e26d50f", User.Role.MODERATOR));
+//        users.add(new User(2, "Natalia", "Krzystanek", "nati123", "e383234c8c5c6cf7eb44a3208e26d50f", User.Role.USER));
     }
 
 
