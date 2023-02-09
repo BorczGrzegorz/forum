@@ -1,4 +1,4 @@
-package bootcamp.it.exercise.forum.authenticator;
+package bootcamp.it.exercise.forum.services;
 
 import bootcamp.it.exercise.forum.exceptions.UserLoginExistException;
 import bootcamp.it.exercise.forum.model.User;

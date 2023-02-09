@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 @Entity(name = "tComment")
-public class Comment {
+public class Comment implements Saveable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

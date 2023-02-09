@@ -1,7 +1,13 @@
 package bootcamp.it.exercise.forum.dataBaseObjects;
 
+import bootcamp.it.exercise.forum.model.Saveable;
+import bootcamp.it.exercise.forum.model.User;
 import bootcamp.it.exercise.forum.sequence.IIdSequence;
 import bootcamp.it.exercise.forum.model.Post;
+import jakarta.persistence.NoResultException;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -11,56 +17,64 @@ import java.util.Optional;
 import java.util.function.ToDoubleBiFunction;
 
 @Repository
-public class PostDAO implements IPostDAO {
-    @Autowired
-    IIdSequence idSequence;
-
+public class PostDAO extends EntityManager implements IPostDAO {
+    public PostDAO(@Autowired SessionFactory sessionFactory) {
+        super(sessionFactory);
+    }
 
     private final List<Post> postList = new ArrayList<>();
 
-    PostDAO() {
-//        postList.add(new Post(1, "Zbigniew Wodecki", "!!!!!!!!!!!**Podwyżki cen komunikacji mejskiej nie dla krakowian***!!!!",
-//                "Będzie drożej i tyle,kanary dalej chodza i sprawdzją czy masz bilet i wgl i w szczególe.A tak" +
-//                        " w ogóle to nie lubię tramwajów tzw: akwarium.Ciepło w nich i duszno i wgl człowiek na człowieku" +
-//                        " i śmierdzi ... tak to już bywa...A wy których tramwajów nie lubicie?"));
-//        postList.add(new Post(2, "Johny Bravo", "klata jak u pirata", "Ile razy ćwiczycie w tygodniu?"));
-//        postList.add(new Post(3, "kot Jinks", "Podygfvyvnikacji mejskiej nie dla krakowian", "NIenawidzę ty myszy :P wy też?"));
-//        postList.add(new Post(4, "Myszka miki", "USZY!?? SERIO??", "czy łądne mam uszy?"));
-//        postList.add(new Post(5, "kaczor donald", "kwa kwa?", "Mam problem z kwakaniem"));
-//        postList.add(new Post(6, "kaczor donald", "kwa kwa?", "Mam 0problem z kwakaniem,pomóżcie w końcu"));
-
-    }
-
     @Override
     public List<Post> getPosts() {
-        return postList;
+        Session session = this.sessionFactory.openSession();
+        Query<Post> query = session.createQuery("FROM bootcamp.it.exercise.forum.model.Post", Post.class);
+        List<Post> result = query.getResultList();
+        session.close();
+        return result;
     }
 
     @Override
-    public void addPost(Post post) {
-        postList.add(post);
+    public void savePost(Post post) {
+        super.persist(post);
     }
 
     @Override
-    public void editPost(Post post,int oldId) {
-        Optional<Post> postById = getPostById(oldId);
-        if(postById.isPresent()) {
-            post.setId(post.getId());
-            post.setHeader(post.getHeader());
-            post.setContent(post.getContent());
-            post.setAuthor(post.getAuthor());
-            postList.set(post.getId(),post);
-            postList.remove(postById.get());
-        }
+    public void editPost(Post post) {
+        super.update(post);
+
+//        Session session = this.sessionFactory.openSession();
+//        Query<Post> query = session.createQuery("FROM bootcamp.it.exercise.forum.model.Post WHERE id = :id", Post.class);
+//        query.setParameter("id", oldId);
+//        Optional<Post> editedPost = Optional.empty();
+//        try {
+//            editedPost = Optional.of(query.getSingleResult());
+//        }catch (NoResultException ignored){}
+
+
+
+//        Optional<Post> postById = getPostById(oldId);
+//        if (postById.isPresent()) {
+//            post.setId(post.getId());
+//            post.setHeader(post.getHeader());
+//            post.setContent(post.getContent());
+//            post.setAuthor(post.getAuthor());
+//            postList.set(post.getId(), post);
+//            postList.remove(postById.get());
+//        }
     }
 
     @Override
     public Optional<Post> getPostById(int id) {
-        for (Post post : this.postList) {
-            if (post.getId() == id) {
-                return Optional.of(post);
-            }
+        Session session = this.sessionFactory.openSession();
+        Query<Post> query = session.createQuery("FROM bootcamp.it.exercise.forum.model.Post WHERE id = :id", Post.class);
+        query.setParameter("id", id);
+        Optional<Post> lookedPost = Optional.empty();
+        try {
+            lookedPost = Optional.of(query.getSingleResult());
+        } catch (NoResultException ignored) {
         }
-        return Optional.empty();
+        session.close();
+        return lookedPost;
     }
 }
+

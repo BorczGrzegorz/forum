@@ -2,6 +2,7 @@ package bootcamp.it.exercise.forum.controllers;
 
 
 import bootcamp.it.exercise.forum.dataBaseObjects.IPostDAO;
+import bootcamp.it.exercise.forum.services.IPostDAOService;
 import bootcamp.it.exercise.forum.session.SessionObject;
 import jakarta.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,10 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class CommonController {
     @Resource
     SessionObject sessionObject;
-    @Autowired
-    IPostDAO postDAO;
-
-
 
     @RequestMapping(value = "/main", method = RequestMethod.GET)
     public String main(Model model) {
@@ -27,8 +24,6 @@ public class CommonController {
 
         return "main";
     }
-
-
 
 
     @RequestMapping(value = "/contact", method = RequestMethod.GET)

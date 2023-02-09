@@ -1,12 +1,11 @@
 package bootcamp.it.exercise.forum.model;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.Cascade;
 
 import java.util.Set;
 
 @Entity(name = "tuser")
-public class User {
+public class User implements Saveable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -101,36 +100,36 @@ public class User {
         MODERATOR
     }
 
-    public static class BudowniczyJOLO {
+    public static class BudowniczyUsera {
         User user = new User();
 
-        public BudowniczyJOLO id(int id) {
+        public BudowniczyUsera id(int id) {
             this.user.setId(id);
             ;
             return this;
         }
 
-        public BudowniczyJOLO name(String name) {
+        public BudowniczyUsera name(String name) {
             this.user.setName(name);
             return this;
         }
 
-        public BudowniczyJOLO surname(String surname) {
+        public BudowniczyUsera surname(String surname) {
             this.user.setSurname(surname);
             return this;
         }
 
-        public BudowniczyJOLO login(String login) {
+        public BudowniczyUsera login(String login) {
             this.user.setLogin(login);
             return this;
         }
 
-        public BudowniczyJOLO password(String password) {
+        public BudowniczyUsera password(String password) {
             this.user.setPassword(password);
             return this;
         }
 
-        public BudowniczyJOLO role(Role role) {
+        public BudowniczyUsera role(Role role) {
             this.user.setRole(role);
             return this;
         }
@@ -139,7 +138,7 @@ public class User {
             return this.user;
         }
 
-        public BudowniczyJOLO clone(User user) {
+        public BudowniczyUsera clone(User user) {
             id(user.getId())
                     .name(user.getName())
                     .surname(user.getSurname())

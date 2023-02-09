@@ -44,6 +44,8 @@ font-family: "Audiowide", sans-serif;
 
 </head>
 <body>
+<div id="logo" th:replace="~{fragmenty.html::logo}"> </div>
+<div th:replace="~{fragmenty.html::menu}"></div>
 <div id="addPostBorder" class="center">
     <form method="post" class="addPostBorder">
         <textarea class="addPost" type="text" placeholder="Temat" th:field="*{post.header}" rows="2" cols="100"></textarea><br>
@@ -54,5 +56,17 @@ font-family: "Audiowide", sans-serif;
         <input type="reset" value="Zapisz" class="button">
     </form>
 </div>
+<div class="row" th:each="post : ${postList}">
+    <div style="font-size:1vw"><h1 th:text="${post.getHeader}"></h1></div>
+    <div th:text="${post.getContent}" class="contenty"></div>
+    <div class="authorPost"><p style="color:#2BA7E3;">autor</p></div>
+    <div th:text="${post.getAuthor}" class="author"></div>
+
+    <a th:if="${sessionObject.isModerator()}" th:href="@{/edit/{id}(id=${post.id})}" class="button">Edytuj Post</a>
+    <a th:if="${sessionObject.isAdmin()}" th:href="@{/edit/{id}(id=${post.id})}" class="button">Edytuj Post</a>
+    <a th:if="${sessionObject.isLogged()}" th:href="@{/commment/{id}(id=${post.id})}" class="button">Skomentuj</a>
+</div>
+<div class="center"> <IMG SRC="pass.gif" class="center"></div>
+
 </body>
 </html>

@@ -19,7 +19,7 @@ public class main {
        System.out.println(ZonedDateTime.now().toString().substring(0, 10)+ " godz: "+ZonedDateTime.now().toString().substring(11, 16));
         LocalDateTime localDateTime = LocalDateTime.now();
         System.out.println(localDateTime);
-        System.out.println(DigestUtils.md5Hex("minimum"));
+        System.out.println(DigestUtils.md5Hex("admin"));
     }
     // <div>
     //        <form method="post">
@@ -32,3 +32,16 @@ public class main {
     //        </form>
     //    </div>
 }
+
+// POSTY!!!!!!!!!!!!!!!11
+
+//        postList.add(new Post(1, "Zbigniew Wodecki", "!!!!!!!!!!!**Podwyżki cen komunikacji mejskiej nie dla krakowian***!!!!",
+//                "Będzie drożej i tyle,kanary dalej chodza i sprawdzją czy masz bilet i wgl i w szczególe.A tak" +
+//                        " w ogóle to nie lubię tramwajów tzw: akwarium.Ciepło w nich i duszno i wgl człowiek na człowieku" +
+//                        " i śmierdzi ... tak to już bywa...A wy których tramwajów nie lubicie?"));
+//        postList.add(new Post(2, "Johny Bravo", "klata jak u pirata", "Ile razy ćwiczycie w tygodniu?"));
+//        postList.add(new Post(3, "kot Jinks", "Podygfvyvnikacji mejskiej nie dla krakowian", "NIenawidzę ty myszy :P wy też?"));
+//        postList.add(new Post(4, "Myszka miki", "USZY!?? SERIO??", "czy łądne mam uszy?"));
+//        postList.add(new Post(5, "kaczor donald", "kwa kwa?", "Mam problem z kwakaniem"));
+//        postList.add(new Post(6, "kaczor donald", "kwa kwa?", "Mam 0problem z kwakaniem,pomóżcie w końcu"));
+

@@ -8,8 +8,8 @@ import java.util.Optional;
 public interface IPostDAO {
      List<Post> getPosts();
 
-    void addPost(Post post);
-    void editPost(Post post,int oldID);
+    void savePost(Post post);
+    void editPost(Post post);
     Optional<Post> getPostById(int id);
 
 

@@ -1,10 +1,10 @@
 package bootcamp.it.exercise.forum.controllers;
 
 import bootcamp.it.exercise.forum.exceptions.UserLoginExistException;
-import bootcamp.it.exercise.forum.authenticator.IAuthenticatorService;
-import bootcamp.it.exercise.forum.dataBaseObjects.IUserDao;
+import bootcamp.it.exercise.forum.services.IAuthenticatorService;
 import bootcamp.it.exercise.forum.model.User;
 import bootcamp.it.exercise.forum.exceptions.UserValidationException;
+import bootcamp.it.exercise.forum.services.IUserDAOService;
 import bootcamp.it.exercise.forum.services.UserValidationService;
 import bootcamp.it.exercise.forum.session.SessionObject;
 import jakarta.annotation.Resource;
@@ -18,14 +18,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class AuthenticatorController {
-    @Autowired
-    IUserDao userDao;
+
     @Resource //resource nie będzie wstrzykiwane jako komponent,tylk ojako zasób, a zasób może się zmianiać,i będzie się wstrzykiwać co żądanie http
     SessionObject sessionObject;
     @Autowired
     UserValidationService userValidationService;
     @Autowired
     IAuthenticatorService authenticatorService;
+    @Autowired
+    IUserDAOService userDAOService;
 
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -44,7 +45,7 @@ public class AuthenticatorController {
             return "redirect:/login";
 
         }
-        return "redirect:/posts";
+        return "redirect:/main";   //tu ma być posts!!
 
     }
 
@@ -64,9 +65,9 @@ public class AuthenticatorController {
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public String form(Model model) {
         model.addAttribute("sessionObject", this.sessionObject);
-        model.addAttribute("thatLoginExists", userDao.getThatLoginExists());
+        model.addAttribute("thatLoginExists", userDAOService.getThatLoginExists());
         model.addAttribute("user", new User());
-        this.userDao.setThatLoginExists("");
+        this.userDAOService.setThatLoginExists("");
         return "register";
     }
 
@@ -74,12 +75,12 @@ public class AuthenticatorController {
     public String register(@ModelAttribute User user, @RequestParam String password2) {
         try {
             this.userValidationService.validateRegisterUser(user, password2);
-            if (userDao.findUserByLogin(user.getLogin()).isPresent()) {
-                this.userDao.setThatLoginExists("***   Spróbuj ponownie z innym loginem.  ***");
+            if (userDAOService.findUserByLogin(user.getLogin()).isPresent()) {
+                this.userDAOService.setThatLoginExists("***   Spróbuj ponownie z innym loginem.  ***");
                 return "redirect:/register";
             }
 
-            userDao.saveUser(user);
+            userDAOService.saveUser(user);
             sessionObject.setUser(user);
         } catch (UserLoginExistException a) {
             a.getMessage();
